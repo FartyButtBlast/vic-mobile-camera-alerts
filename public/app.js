@@ -5,6 +5,7 @@ const GEOCODE_CACHE_KEY = "vic-camera-geocodes-v1";
 const CAMERA_DATA_KEY = "vic-camera-data-v1";
 const SETTINGS_KEY = "vic-camera-settings-v1";
 const ALERT_COOLDOWN_MS = 90_000;
+const MAP_RADIUS_METERS = 1000;
 
 const state = {
   cameras: [],
@@ -16,6 +17,7 @@ const state = {
   map: null,
   userMarker: null,
   cameraLayer: null,
+  radiusCircle: null,
   routeLine: null,
   lastAlertAt: 0,
   audioContext: null
@@ -157,10 +159,10 @@ function updateUserMarker() {
   const icon = L.divIcon({ className: "", html: '<div class="user-marker"></div>', iconSize: [18, 18], iconAnchor: [9, 9] });
   if (!state.userMarker) {
     state.userMarker = L.marker(latLng, { icon }).addTo(state.map);
-    state.map.setView(latLng, 15);
   } else {
     state.userMarker.setLatLng(latLng);
   }
+  updateWatchArea(latLng);
 }
 
 function evaluateNearest() {
@@ -204,9 +206,7 @@ function renderNearest() {
   drawKnownCameraMarkers(nearest.camera.id);
   if (state.routeLine) state.routeLine.remove();
   state.routeLine = L.polyline([userLatLng, cameraLatLng], { color: close ? "#ff5c77" : "#f7c948", weight: 4 }).addTo(state.map);
-  if (close) {
-    state.map.fitBounds(L.latLngBounds([userLatLng, cameraLatLng]).pad(0.45), { maxZoom: 17 });
-  }
+  keepMapOnWatchArea();
 }
 
 function triggerApproachAlert(nearest) {
@@ -373,18 +373,61 @@ function drawKnownCameraMarkers(activeId = "") {
   state.cameraLayer.clearLayers();
   const markers = state.cameras
     .filter((camera) => state.geocodes[camera.id])
-    .slice(0, 600)
     .map((camera) => {
       const coords = state.geocodes[camera.id];
+      const distance = state.userPosition ? distanceMeters(state.userPosition, coords) : 0;
+      return { camera, coords, distance };
+    })
+    .filter((item) => !state.userPosition || item.distance <= MAP_RADIUS_METERS)
+    .sort((a, b) => a.distance - b.distance)
+    .slice(0, 60)
+    .map((camera) => {
+      const active = camera.camera.id === activeId;
       const icon = L.divIcon({
         className: "",
-        html: `<div class="camera-marker">${camera.id === activeId ? "!" : "M"}</div>`,
-        iconSize: [24, 24],
-        iconAnchor: [12, 12]
+        html: cameraIconHtml(active),
+        iconSize: [36, 36],
+        iconAnchor: [18, 18]
       });
-      return L.marker([coords.lat, coords.lng], { icon }).bindPopup(`<strong>${escapeHtml(camera.location)}</strong><br>${escapeHtml(camera.suburb)}<br>Mobile approved location`);
+      return L.marker([camera.coords.lat, camera.coords.lng], { icon }).bindPopup(`<strong>${escapeHtml(camera.camera.location)}</strong><br>${escapeHtml(camera.camera.suburb)}<br>Mobile approved location`);
     });
   markers.forEach((marker) => marker.addTo(state.cameraLayer));
+}
+
+function updateWatchArea(latLng) {
+  if (!state.radiusCircle) {
+    state.radiusCircle = L.circle(latLng, {
+      radius: MAP_RADIUS_METERS,
+      color: "#2188ff",
+      weight: 2,
+      opacity: 0.78,
+      fillColor: "#2188ff",
+      fillOpacity: 0.08
+    }).addTo(state.map);
+  } else {
+    state.radiusCircle.setLatLng(latLng);
+  }
+  keepMapOnWatchArea();
+}
+
+function keepMapOnWatchArea() {
+  if (!state.radiusCircle) return;
+  state.map.fitBounds(state.radiusCircle.getBounds(), {
+    animate: true,
+    paddingTopLeft: [18, 18],
+    paddingBottomRight: [18, 190],
+    maxZoom: 16
+  });
+}
+
+function cameraIconHtml(active) {
+  return `
+    <div class="camera-marker${active ? " active" : ""}" aria-label="Possible mobile camera location">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 7.5h2.1l1.2-2h3.4l1.2 2H17a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3Z"/>
+        <circle cx="12" cy="13.2" r="3.1"/>
+      </svg>
+    </div>`;
 }
 
 function render() {

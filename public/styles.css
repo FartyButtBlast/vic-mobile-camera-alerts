@@ -55,7 +55,7 @@ input {
   z-index: 2;
   display: grid;
   gap: 14px;
-  max-height: min(72dvh, 680px);
+  max-height: min(42dvh, 430px);
   overflow: auto;
   padding: 18px;
   border: 1px solid var(--line);
@@ -236,15 +236,26 @@ input[type="range"] {
 
 .camera-marker {
   display: grid;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   place-items: center;
   border: 2px solid #111820;
   border-radius: 50%;
   background: var(--accent);
   color: #111820;
-  font-size: 14px;
-  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.38);
+}
+
+.camera-marker.active {
+  background: var(--danger);
+  color: #ffffff;
+  transform: scale(1.12);
+}
+
+.camera-marker svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }
 
 .user-marker {
@@ -262,8 +273,8 @@ input[type="range"] {
     right: 24px;
     bottom: auto;
     left: auto;
-    width: 390px;
-    max-height: calc(100dvh - 48px);
+    width: 360px;
+    max-height: min(62dvh, 560px);
   }
 }
 
@@ -273,6 +284,7 @@ input[type="range"] {
     right: 10px;
     bottom: calc(10px + env(safe-area-inset-bottom));
     padding: 14px;
+    max-height: 38dvh;
   }
 
   .brand-row h1 {

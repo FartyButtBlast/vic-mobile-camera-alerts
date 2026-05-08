@@ -1,4 +1,4 @@
-const CACHE_NAME = "vic-mobile-camera-alerts-v1";
+const CACHE_NAME = "vic-mobile-camera-alerts-v2";
 const APP_SHELL = [
   "./",
   "index.html",
