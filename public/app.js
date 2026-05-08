@@ -1,6 +1,8 @@
 const DATASET_API =
   "https://discover.data.vic.gov.au/api/3/action/package_show?id=road-safety-camera-network-mobile-camera-locations";
+const LATEST_DATA = new URL("data/mobile-cameras-latest.json", location.href).toString();
 const SEED_DATA = new URL("data/mobile-cameras-april-2026.json", location.href).toString();
+const LATEST_EXCEL = new URL("data/latest-mobile-camera-locations.xlsx", location.href).toString();
 const GEOCODE_CACHE_KEY = "vic-camera-geocodes-v1";
 const CAMERA_DATA_KEY = "vic-camera-data-v1";
 const SETTINGS_KEY = "vic-camera-settings-v1";
@@ -125,9 +127,9 @@ async function loadCameraData() {
     return;
   }
 
-  const response = await fetch(SEED_DATA);
+  const response = await fetch(LATEST_DATA).catch(() => fetch(SEED_DATA));
   const data = await response.json();
-  applyCameraData(data, "Loaded April 2026 from the local seed file.");
+  applyCameraData(data, `Loaded ${data.period || "latest"} from GitHub-hosted camera data.`);
 }
 
 function applyCameraData(data, statusText) {
@@ -336,6 +338,18 @@ async function geocodeCamera(camera) {
 }
 
 async function downloadLatestMonthlyFile() {
+  els.dataStatus.textContent = "Checking the GitHub-hosted latest Excel file...";
+  try {
+    const response = await fetch(LATEST_EXCEL, { cache: "no-store" });
+    if (!response.ok) throw new Error("GitHub-hosted Excel not available");
+    const buffer = await response.arrayBuffer();
+    const data = parseWorkbook(buffer, "latest-mobile-camera-locations.xlsx", LATEST_EXCEL);
+    applyCameraData(data, `Loaded ${data.period || "latest"} from the GitHub-hosted Excel file.`);
+    return;
+  } catch (githubError) {
+    console.warn(githubError);
+  }
+
   els.dataStatus.textContent = "Checking Data Vic for the latest monthly file...";
   try {
     const response = await fetch(DATASET_API);

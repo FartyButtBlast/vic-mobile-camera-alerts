@@ -5,7 +5,9 @@ import XLSX from "xlsx";
 
 const DATASET_API =
   "https://discover.data.vic.gov.au/api/3/action/package_show?id=road-safety-camera-network-mobile-camera-locations";
-const outputPath = path.join(process.cwd(), "public", "data", "mobile-cameras-april-2026.json");
+const dataDir = path.join(process.cwd(), "public", "data");
+const jsonOutputPath = path.join(dataDir, "mobile-cameras-latest.json");
+const excelOutputPath = path.join(dataDir, "latest-mobile-camera-locations.xlsx");
 
 const dataset = await fetchJson(DATASET_API);
 const resource = selectLatestExcelResource(dataset.result?.resources ?? []);
@@ -20,10 +22,12 @@ const sheet = workbook.Sheets[workbook.SheetNames[0]];
 const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
 const data = parseRows(rows, resource);
 
-await fs.mkdir(path.dirname(outputPath), { recursive: true });
-await fs.writeFile(outputPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+await fs.mkdir(dataDir, { recursive: true });
+await fs.writeFile(excelOutputPath, workbookBuffer);
+await fs.writeFile(jsonOutputPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
 
 console.log(`Wrote ${data.count} mobile camera locations from ${data.sourceFile}.`);
+console.log(`Saved latest Excel to ${path.relative(process.cwd(), excelOutputPath)}.`);
 
 function selectLatestExcelResource(resources) {
   return resources
@@ -80,7 +84,8 @@ function parseRows(rows, resource) {
 
   return {
     sourceFile,
-    sourceUrl: resource.url,
+    sourceUrl: "data/latest-mobile-camera-locations.xlsx",
+    upstreamSourceUrl: resource.url,
     datasetUrl: "https://discover.data.vic.gov.au/dataset/road-safety-camera-network-mobile-camera-locations",
     period: inferPeriod(sourceFile),
     count: cameras.length,

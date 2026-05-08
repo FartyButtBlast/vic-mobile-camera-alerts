@@ -23,7 +23,15 @@ The workflow in `.github/workflows/deploy-pages.yml` runs:
 - whenever you trigger it manually
 - once per day, so it can pick up the newest monthly camera spreadsheet after Data Vic publishes it
 
-Each run downloads the latest mobile camera Excel resource from Data Vic, rebuilds `public/data/mobile-cameras-april-2026.json`, and deploys the refreshed PWA.
+Each run downloads the latest mobile camera Excel resource from Data Vic, rebuilds `public/data/mobile-cameras-latest.json`, and deploys the refreshed PWA.
+
+The workflow also stores the latest Excel file at:
+
+`public/data/latest-mobile-camera-locations.xlsx`
+
+The matching parsed JSON lives at:
+
+`public/data/mobile-cameras-latest.json`
 
 ## Local update
 

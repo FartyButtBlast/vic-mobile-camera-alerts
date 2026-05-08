@@ -22,6 +22,14 @@ The intended repository is:
 
 After the repository exists, push `main`, then set GitHub Pages to **GitHub Actions**.
 
+The latest Excel source is stored in the repo and published with the app at:
+
+`public/data/latest-mobile-camera-locations.xlsx`
+
+On GitHub Pages it is available at:
+
+`https://FartyButtBlast.github.io/vic-mobile-camera-alerts/data/latest-mobile-camera-locations.xlsx`
+
 ## Notes
 
 - The source spreadsheet contains location descriptions and suburbs, but not latitude/longitude.
