@@ -1,6 +1,6 @@
 const DATASET_API =
   "https://discover.data.vic.gov.au/api/3/action/package_show?id=road-safety-camera-network-mobile-camera-locations";
-const SEED_DATA = "/data/mobile-cameras-april-2026.json";
+const SEED_DATA = new URL("data/mobile-cameras-april-2026.json", location.href).toString();
 const GEOCODE_CACHE_KEY = "vic-camera-geocodes-v1";
 const CAMERA_DATA_KEY = "vic-camera-data-v1";
 const SETTINGS_KEY = "vic-camera-settings-v1";
@@ -81,7 +81,7 @@ function wireControls() {
 async function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
-      await navigator.serviceWorker.register("/sw.js");
+      await navigator.serviceWorker.register(new URL("sw.js", location.href));
     } catch (error) {
       console.warn("Service worker unavailable", error);
     }
@@ -221,8 +221,8 @@ function triggerApproachAlert(nearest) {
       registration.showNotification("Mobile camera approved location nearby", {
         body,
         tag: `camera-${nearest.camera.id}`,
-        icon: "/icon.svg",
-        badge: "/icon.svg"
+        icon: new URL("icon.svg", location.href).toString(),
+        badge: new URL("icon.svg", location.href).toString()
       });
     });
   }

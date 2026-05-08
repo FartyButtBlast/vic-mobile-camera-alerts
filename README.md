@@ -12,6 +12,16 @@ python3 -m http.server 4173 -d public
 
 Then open `http://127.0.0.1:4173/`.
 
+## Deploy
+
+This project is set up like AFL Performance Lab: GitHub Pages deploys the static PWA from `.github/workflows/deploy-pages.yml`.
+
+The intended repository is:
+
+`https://github.com/FartyButtBlast/vic-mobile-camera-alerts`
+
+After the repository exists, push `main`, then set GitHub Pages to **GitHub Actions**.
+
 ## Notes
 
 - The source spreadsheet contains location descriptions and suburbs, but not latitude/longitude.

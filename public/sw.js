@@ -1,12 +1,12 @@
 const CACHE_NAME = "vic-mobile-camera-alerts-v1";
 const APP_SHELL = [
-  "/",
-  "/index.html",
-  "/styles.css",
-  "/app.js",
-  "/manifest.webmanifest",
-  "/icon.svg",
-  "/data/mobile-cameras-april-2026.json"
+  "./",
+  "index.html",
+  "styles.css",
+  "app.js",
+  "manifest.webmanifest",
+  "icon.svg",
+  "data/mobile-cameras-april-2026.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -50,7 +50,7 @@ self.addEventListener("notificationclick", (event) => {
       for (const client of clientList) {
         if ("focus" in client) return client.focus();
       }
-      return clients.openWindow("/");
+      return clients.openWindow("./");
     })
   );
 });
