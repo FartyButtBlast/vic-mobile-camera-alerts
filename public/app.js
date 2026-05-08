@@ -421,8 +421,6 @@ function updateWatchArea(latLng) {
   } else {
     state.radiusCircle.setLatLng(latLng);
   }
-  const bounds = state.radiusCircle.getBounds().pad(0.2);
-  state.map.setMaxBounds(bounds);
   keepMapOnWatchArea();
 }
 
