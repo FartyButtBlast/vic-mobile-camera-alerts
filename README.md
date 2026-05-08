@@ -34,7 +34,7 @@ The app can also load pre-mapped coordinates from:
 
 `public/data/mobile-cameras-geocoded.json`
 
-Refresh that file only when a new Excel is loaded:
+The GitHub workflow refreshes that file automatically after loading the latest Excel. To run it locally:
 
 ```sh
 npm run geocode:data

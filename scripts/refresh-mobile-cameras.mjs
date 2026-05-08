@@ -139,6 +139,15 @@ function inferPeriod(fileName) {
 }
 
 async function resetGeocodedOutput(data) {
+  const existing = await readExistingGeocodedOutput();
+  if (
+    existing &&
+    existing.upstreamSourceUrl === data.upstreamSourceUrl &&
+    existing.count === data.cameras.length
+  ) {
+    return;
+  }
+
   const payload = {
     generatedAt: null,
     sourceFile: data.sourceFile,
@@ -153,4 +162,12 @@ async function resetGeocodedOutput(data) {
     failures: []
   };
   await fs.writeFile(geocodedOutputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+}
+
+async function readExistingGeocodedOutput() {
+  try {
+    return JSON.parse(await fs.readFile(geocodedOutputPath, "utf8"));
+  } catch {
+    return null;
+  }
 }

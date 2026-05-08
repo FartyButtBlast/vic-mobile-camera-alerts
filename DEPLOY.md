@@ -37,13 +37,13 @@ The fully mapped camera JSON lives at:
 
 `public/data/mobile-cameras-geocoded.json`
 
-Create or refresh it only when a new Excel file is loaded:
+The GitHub workflow creates or refreshes it automatically after loading the latest Excel. To run it locally:
 
 ```sh
 npm run geocode:data
 ```
 
-The geocoding job is resumable and writes progress back to the JSON file after each location. It intentionally runs slowly because public geocoders rate-limit bulk address lookup.
+The geocoding job is resumable and writes progress back to the JSON file after each location. It intentionally runs slowly because public geocoders rate-limit bulk address lookup. If the Excel file has not changed, existing mapped coordinates are preserved.
 
 ## Local update
 

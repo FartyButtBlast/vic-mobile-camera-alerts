@@ -36,6 +36,9 @@ jobs:
       - name: Refresh mobile camera data
         run: npm run build:data
 
+      - name: Generate mapped camera locations
+        run: npm run geocode:data
+
       - name: Commit refreshed camera files
         if: github.event_name != 'push'
         run: |

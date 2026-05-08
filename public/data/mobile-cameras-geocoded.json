@@ -1,12 +1,50 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-05-08T11:06:41.082Z",
   "sourceFile": "latest-mobile-camera-locations.xlsx",
   "sourceUrl": "data/latest-mobile-camera-locations.xlsx",
+  "upstreamSourceUrl": "https://www.vic.gov.au/sites/default/files/2026-03/Mobile-Camera-Locations-April-2026.xlsx",
   "period": "April 2026",
   "count": 2252,
-  "mappedCount": 0,
-  "unmappedCount": 2252,
-  "note": "Run npm run geocode:data after loading a new Excel file to populate this file with approximate coordinates.",
-  "locations": [],
+  "mappedCount": 3,
+  "unmappedCount": 2249,
+  "note": "Generated when a new mobile camera Excel file is loaded. Coordinates are approximate geocodes from road/suburb descriptions.",
+  "locations": [
+    {
+      "id": "abey-road-cobblebank",
+      "location": "Abey Road",
+      "suburb": "Cobblebank",
+      "query": "Abey Road, Cobblebank, Victoria, Australia",
+      "lat": -37.7061809,
+      "lng": 144.6010295,
+      "label": "Abey Road, Cobblebank, Melbourne, Victoria, 3338, Australia",
+      "geocoder": "nominatim",
+      "approximate": true,
+      "geocodedAt": "2026-05-08T11:06:39.490Z"
+    },
+    {
+      "id": "abbotts-road-dandenong-south",
+      "location": "Abbotts Road",
+      "suburb": "Dandenong South",
+      "query": "Abbotts Road, Dandenong South, Victoria, Australia",
+      "lat": -38.0333478,
+      "lng": 145.2252661,
+      "label": "Abbotts Road, Dandenong South, Melbourne, Victoria, 3175, Australia",
+      "geocoder": "nominatim",
+      "approximate": true,
+      "geocodedAt": "2026-05-08T11:06:38.200Z"
+    },
+    {
+      "id": "acacia-street-glenroy",
+      "location": "Acacia Street",
+      "suburb": "Glenroy",
+      "query": "Acacia Street, Glenroy, Victoria, Australia",
+      "lat": -37.7079036,
+      "lng": 144.9245845,
+      "label": "Acacia Street, Glenroy, Melbourne, Victoria, 3046, Australia",
+      "geocoder": "nominatim",
+      "approximate": true,
+      "geocodedAt": "2026-05-08T11:06:40.829Z"
+    }
+  ],
   "failures": []
 }
