@@ -53,13 +53,23 @@ async function boot() {
 }
 
 function initMap() {
-  state.map = L.map("map", { zoomControl: false }).setView([-37.8136, 144.9631], 10);
+  state.map = L.map("map", {
+    zoomControl: false,
+    zoomSnap: 0.25,
+    maxBoundsViscosity: 1
+  }).setView([-37.8136, 144.9631], 15);
   L.control.zoom({ position: "topright" }).addTo(state.map);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
+    keepBuffer: 6,
+    updateWhenIdle: false,
+    updateWhenZooming: true,
     attribution: "&copy; OpenStreetMap"
   }).addTo(state.map);
   state.cameraLayer = L.layerGroup().addTo(state.map);
+  requestAnimationFrame(() => state.map.invalidateSize(true));
+  window.addEventListener("resize", () => state.map.invalidateSize(true));
+  window.visualViewport?.addEventListener("resize", () => state.map.invalidateSize(true));
 }
 
 function wireControls() {
@@ -205,7 +215,11 @@ function renderNearest() {
   const cameraLatLng = [nearest.coords.lat, nearest.coords.lng];
   drawKnownCameraMarkers(nearest.camera.id);
   if (state.routeLine) state.routeLine.remove();
-  state.routeLine = L.polyline([userLatLng, cameraLatLng], { color: close ? "#ff5c77" : "#f7c948", weight: 4 }).addTo(state.map);
+  if (nearest.distance <= MAP_RADIUS_METERS) {
+    state.routeLine = L.polyline([userLatLng, cameraLatLng], { color: close ? "#ff5c77" : "#f7c948", weight: 4 }).addTo(state.map);
+  } else {
+    state.routeLine = null;
+  }
   keepMapOnWatchArea();
 }
 
@@ -407,17 +421,30 @@ function updateWatchArea(latLng) {
   } else {
     state.radiusCircle.setLatLng(latLng);
   }
+  const bounds = state.radiusCircle.getBounds().pad(0.2);
+  state.map.setMaxBounds(bounds);
   keepMapOnWatchArea();
 }
 
 function keepMapOnWatchArea() {
   if (!state.radiusCircle) return;
+  state.map.invalidateSize(true);
   state.map.fitBounds(state.radiusCircle.getBounds(), {
     animate: true,
-    paddingTopLeft: [18, 18],
-    paddingBottomRight: [18, 190],
+    paddingTopLeft: mapPadding().topLeft,
+    paddingBottomRight: mapPadding().bottomRight,
     maxZoom: 16
   });
+}
+
+function mapPadding() {
+  const panel = document.querySelector(".panel");
+  const rect = panel?.getBoundingClientRect();
+  if (!rect) return { topLeft: [24, 24], bottomRight: [24, 24] };
+  if (window.matchMedia("(min-width: 760px)").matches) {
+    return { topLeft: [24, 24], bottomRight: [Math.ceil(rect.width + 48), 24] };
+  }
+  return { topLeft: [18, 18], bottomRight: [18, Math.ceil(rect.height + 36)] };
 }
 
 function cameraIconHtml(active) {
