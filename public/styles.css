@@ -180,8 +180,7 @@ p {
   color: var(--accent);
 }
 
-button,
-.file-drop {
+button {
   min-height: 46px;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -195,22 +194,13 @@ button,
   color: #121212;
 }
 
-.secondary-action,
-.file-drop {
+.secondary-action {
   display: grid;
   place-items: center;
   background: rgba(245, 247, 251, 0.08);
   color: var(--ink);
   border-color: var(--line);
   text-align: center;
-}
-
-.file-drop input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .range-row span,
@@ -254,22 +244,6 @@ input[type="range"] {
 .stats-grid p {
   color: var(--muted);
   font-size: 0.75rem;
-}
-
-.data-panel {
-  border-top: 1px solid var(--line);
-  padding-top: 8px;
-}
-
-.data-panel summary {
-  cursor: pointer;
-  font-weight: 850;
-}
-
-.stack {
-  display: grid;
-  gap: 10px;
-  padding-top: 12px;
 }
 
 .leaflet-control-attribution {

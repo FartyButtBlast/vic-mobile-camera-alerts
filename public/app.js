@@ -1,9 +1,6 @@
-const DATASET_API =
-  "https://discover.data.vic.gov.au/api/3/action/package_show?id=road-safety-camera-network-mobile-camera-locations";
 const LATEST_DATA = new URL("data/mobile-cameras-latest.json", location.href).toString();
 const GEOCODED_DATA = new URL("data/mobile-cameras-geocoded.json", location.href).toString();
 const SEED_DATA = new URL("data/mobile-cameras-april-2026.json", location.href).toString();
-const LATEST_EXCEL = new URL("data/latest-mobile-camera-locations.xlsx", location.href).toString();
 const GEOCODE_CACHE_KEY = "vic-camera-geocodes-v1";
 const CAMERA_DATA_KEY = "vic-camera-data-v1";
 const SETTINGS_KEY = "vic-camera-settings-v1";
@@ -40,11 +37,7 @@ const els = {
   radiusValue: document.querySelector("#radiusValue"),
   cameraCount: document.querySelector("#cameraCount"),
   codedCount: document.querySelector("#codedCount"),
-  lastUpdate: document.querySelector("#lastUpdate"),
-  monthlyButton: document.querySelector("#monthlyButton"),
-  fileInput: document.querySelector("#fileInput"),
-  geocodeButton: document.querySelector("#geocodeButton"),
-  dataStatus: document.querySelector("#dataStatus")
+  lastUpdate: document.querySelector("#lastUpdate")
 };
 
 document.addEventListener("DOMContentLoaded", boot);
@@ -86,9 +79,6 @@ function wireControls() {
 
   els.recenterButton.addEventListener("click", recenterFromControl);
   els.soundTestButton.addEventListener("click", () => playMobileAlert(true));
-  els.monthlyButton.addEventListener("click", downloadLatestMonthlyFile);
-  els.geocodeButton.addEventListener("click", () => geocodeNextBatch(35));
-  els.fileInput.addEventListener("change", importSelectedFile);
   els.radiusInput.addEventListener("input", () => {
     state.alertRadius = Number(els.radiusInput.value);
     saveJson(SETTINGS_KEY, { radius: state.alertRadius });
@@ -168,7 +158,6 @@ async function loadGeocodedCameraData() {
     }
     if (!merged) return;
     saveJson(GEOCODE_CACHE_KEY, state.geocodes);
-    els.dataStatus.textContent = `Loaded ${merged} mapped camera locations from generated JSON.`;
     render();
     drawKnownCameraMarkers();
     evaluateNearest();
@@ -238,7 +227,7 @@ function evaluateNearest() {
 
   if (!mapped.length) {
     els.nearestTitle.textContent = "No mapped camera sites yet";
-    els.nearestMeta.textContent = "Use Data updates to map locations. They are cached for future trips.";
+    els.nearestMeta.textContent = "Mapped camera data is not available yet. The automated geocoding job needs to run.";
     render();
     return;
   }
@@ -358,128 +347,6 @@ function updateNotificationStatus(permission) {
   };
   els.alertPermissionStatus.textContent = messages[permission] || messages.default;
   els.alertPermissionStatus.dataset.permission = permission;
-}
-
-async function geocodeNextBatch(limit = 25) {
-  const pending = state.cameras.filter((camera) => !state.geocodes[camera.id]).slice(0, limit);
-  if (!pending.length) {
-    els.dataStatus.textContent = "All loaded camera sites have mapped positions.";
-    return;
-  }
-
-  els.geocodeButton.disabled = true;
-  for (const [index, camera] of pending.entries()) {
-    els.dataStatus.textContent = `Mapping ${index + 1} of ${pending.length}: ${camera.location}, ${camera.suburb}`;
-    const coords = await geocodeCamera(camera);
-    if (coords) {
-      state.geocodes[camera.id] = coords;
-      saveJson(GEOCODE_CACHE_KEY, state.geocodes);
-      drawKnownCameraMarkers();
-      evaluateNearest();
-    }
-    await sleep(1150);
-  }
-  els.geocodeButton.disabled = false;
-  els.dataStatus.textContent = `Mapped ${Object.keys(state.geocodes).length} locations.`;
-  render();
-}
-
-async function geocodeCamera(camera) {
-  const params = new URLSearchParams({
-    format: "jsonv2",
-    countrycodes: "au",
-    limit: "1",
-    q: camera.query
-  });
-  try {
-    const response = await fetch(`https://nominatim.openstreetmap.org/search?${params.toString()}`, {
-      headers: { Accept: "application/json" }
-    });
-    if (!response.ok) return null;
-    const [match] = await response.json();
-    if (!match) return null;
-    return { lat: Number(match.lat), lng: Number(match.lon), label: match.display_name, approximate: true };
-  } catch (error) {
-    console.warn("Geocode failed", error);
-    return null;
-  }
-}
-
-async function downloadLatestMonthlyFile() {
-  els.dataStatus.textContent = "Checking the GitHub-hosted latest Excel file...";
-  try {
-    const response = await fetch(LATEST_EXCEL, { cache: "no-store" });
-    if (!response.ok) throw new Error("GitHub-hosted Excel not available");
-    const buffer = await response.arrayBuffer();
-    const data = parseWorkbook(buffer, "latest-mobile-camera-locations.xlsx", LATEST_EXCEL);
-    applyCameraData(data, `Loaded ${data.period || "latest"} from the GitHub-hosted Excel file.`);
-    return;
-  } catch (githubError) {
-    console.warn(githubError);
-  }
-
-  els.dataStatus.textContent = "Checking Data Vic for the latest monthly file...";
-  try {
-    const response = await fetch(DATASET_API);
-    const payload = await response.json();
-    const resources = payload.result.resources
-      .filter((resource) => /xls/i.test(resource.format || "") || /\.xlsx?$/i.test(resource.url || ""))
-      .sort((a, b) => new Date(b.period_start || b.created || b.metadata_modified) - new Date(a.period_start || a.created || a.metadata_modified));
-    const latest = resources[0];
-    if (!latest?.url) throw new Error("No Excel resource found");
-    els.dataStatus.textContent = `Downloading ${latest.name || "latest mobile camera file"}...`;
-    const fileResponse = await fetch(latest.url);
-    const buffer = await fileResponse.arrayBuffer();
-    const data = parseWorkbook(buffer, latest.name || "Latest mobile camera file", latest.url);
-    applyCameraData(data, `Loaded ${data.period || "latest"} from Data Vic.`);
-  } catch (error) {
-    els.dataStatus.textContent = "Monthly download was blocked by the browser. Import the Excel file manually instead.";
-    console.warn(error);
-  }
-}
-
-async function importSelectedFile(event) {
-  const [file] = event.target.files;
-  if (!file) return;
-  const buffer = await file.arrayBuffer();
-  const data = parseWorkbook(buffer, file.name, "");
-  applyCameraData(data, `Imported ${file.name}.`);
-  event.target.value = "";
-}
-
-function parseWorkbook(buffer, sourceFile, sourceUrl) {
-  if (!window.XLSX) throw new Error("Excel parser unavailable");
-  const workbook = XLSX.read(buffer, { type: "array" });
-  const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
-  const headerIndex = rows.findIndex((row) => row.some((cell) => String(cell).trim().toUpperCase() === "LOCATION"));
-  const headers = rows[headerIndex].map((cell) => String(cell).trim());
-  const locationIndex = headers.findIndex((header) => /^location$/i.test(header));
-  const suburbIndex = headers.findIndex((header) => /^suburb$/i.test(header));
-  const reasonIndex = headers.findIndex((header) => /reason/i.test(header));
-  const auditIndex = headers.findIndex((header) => /audit/i.test(header));
-  const cameras = rows.slice(headerIndex + 1).map((row, index) => {
-    const location = String(row[locationIndex] || "").trim();
-    const suburb = titleCase(String(row[suburbIndex] || "").trim());
-    if (!location || !suburb) return null;
-    return {
-      id: slug(`${location}-${suburb}-${index}`),
-      location,
-      suburb,
-      reasonCode: String(row[reasonIndex] || "").trim(),
-      auditDate: String(row[auditIndex] || "").trim(),
-      query: `${location}, ${suburb}, Victoria, Australia`
-    };
-  }).filter(Boolean);
-
-  return {
-    sourceFile,
-    sourceUrl,
-    datasetUrl: "https://discover.data.vic.gov.au/dataset/road-safety-camera-network-mobile-camera-locations",
-    period: inferPeriod(sourceFile),
-    count: cameras.length,
-    cameras
-  };
 }
 
 function drawKnownCameraMarkers(activeId = "") {
