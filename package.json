@@ -1,0 +1,10 @@
+{
+  "name": "victoria-mobile-camera-alerts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 4173 -d public",
+    "dev": "python3 -m http.server 4173 -d public"
+  }
+}
