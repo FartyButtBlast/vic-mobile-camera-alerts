@@ -1,7 +1,8 @@
-const CACHE_NAME = "vic-mobile-camera-alerts-v2";
+const CACHE_NAME = "vic-mobile-camera-alerts-v3";
 const APP_SHELL = [
   "./",
   "index.html",
+  "leaflet.css",
   "styles.css",
   "app.js",
   "manifest.webmanifest",
