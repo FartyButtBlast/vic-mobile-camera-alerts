@@ -183,8 +183,8 @@ function updateUserMarker() {
   const icon = L.divIcon({
     className: "",
     html: userMarkerHtml(state.userHeading),
-    iconSize: [54, 54],
-    iconAnchor: [27, 27]
+    iconSize: [34, 42],
+    iconAnchor: [17, 24]
   });
   if (!state.userMarker) {
     state.userMarker = L.marker(latLng, { icon }).addTo(state.map);
