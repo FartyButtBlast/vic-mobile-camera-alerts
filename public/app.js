@@ -231,7 +231,7 @@ function renderNearest() {
   } else {
     state.routeLine = null;
   }
-  keepMapOnWatchArea();
+  centerMapOnUser();
 }
 
 function triggerApproachAlert(nearest) {
@@ -432,28 +432,13 @@ function updateWatchArea(latLng) {
   } else {
     state.radiusCircle.setLatLng(latLng);
   }
-  keepMapOnWatchArea();
+  centerMapOnUser();
 }
 
-function keepMapOnWatchArea() {
-  if (!state.radiusCircle) return;
+function centerMapOnUser() {
+  if (!state.userPosition) return;
   state.map.invalidateSize(true);
-  state.map.fitBounds(state.radiusCircle.getBounds(), {
-    animate: true,
-    paddingTopLeft: mapPadding().topLeft,
-    paddingBottomRight: mapPadding().bottomRight,
-    maxZoom: 16
-  });
-}
-
-function mapPadding() {
-  const panel = document.querySelector(".panel");
-  const rect = panel?.getBoundingClientRect();
-  if (!rect) return { topLeft: [24, 24], bottomRight: [24, 24] };
-  if (window.matchMedia("(min-width: 760px)").matches) {
-    return { topLeft: [24, 24], bottomRight: [Math.ceil(rect.width + 48), 24] };
-  }
-  return { topLeft: [18, 18], bottomRight: [18, Math.ceil(rect.height + 36)] };
+  state.map.setView([state.userPosition.lat, state.userPosition.lng], 16, { animate: true });
 }
 
 function cameraIconHtml(active) {
