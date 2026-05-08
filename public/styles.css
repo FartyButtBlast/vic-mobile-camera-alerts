@@ -140,6 +140,10 @@ p {
   grid-template-columns: 1fr 1fr;
 }
 
+.control-grid.single-action {
+  grid-template-columns: 1fr;
+}
+
 button,
 .file-drop {
   min-height: 46px;

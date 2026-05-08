@@ -29,7 +29,6 @@ const els = {
   alertCard: document.querySelector("#alertCard"),
   nearestTitle: document.querySelector("#nearestTitle"),
   nearestMeta: document.querySelector("#nearestMeta"),
-  startButton: document.querySelector("#startButton"),
   notifyButton: document.querySelector("#notifyButton"),
   soundTestButton: document.querySelector("#soundTestButton"),
   radiusInput: document.querySelector("#radiusInput"),
@@ -51,6 +50,7 @@ async function boot() {
   wireControls();
   await registerServiceWorker();
   await loadCameraData();
+  startTracking();
   render();
 }
 
@@ -78,7 +78,6 @@ function wireControls() {
   els.radiusInput.value = state.alertRadius;
   els.radiusValue.textContent = formatDistance(state.alertRadius);
 
-  els.startButton.addEventListener("click", toggleTracking);
   els.notifyButton.addEventListener("click", requestNotifications);
   els.soundTestButton.addEventListener("click", () => playMobileAlert(true));
   els.monthlyButton.addEventListener("click", downloadLatestMonthlyFile);
@@ -128,23 +127,16 @@ function applyCameraData(data, statusText) {
   evaluateNearest();
 }
 
-function toggleTracking() {
-  if (state.watchId !== null) {
-    navigator.geolocation.clearWatch(state.watchId);
-    state.watchId = null;
-    els.startButton.textContent = "Start tracking";
-    els.nearestTitle.textContent = "Tracking paused";
-    els.nearestMeta.textContent = "Start tracking again when you are driving.";
-    return;
-  }
-
+function startTracking() {
+  if (state.watchId !== null) return;
   if (!("geolocation" in navigator)) {
     els.nearestTitle.textContent = "Location is unavailable";
     els.nearestMeta.textContent = "This browser does not support GPS tracking.";
     return;
   }
 
-  els.startButton.textContent = "Starting...";
+  els.nearestTitle.textContent = "Finding your location";
+  els.nearestMeta.textContent = "Allow location access so the app can monitor nearby camera sites.";
   state.watchId = navigator.geolocation.watchPosition(onPosition, onPositionError, {
     enableHighAccuracy: true,
     maximumAge: 5000,
@@ -158,13 +150,11 @@ function onPosition(position) {
   state.userHeading = resolveHeading(nextPosition, state.userPosition);
   state.previousPosition = state.userPosition;
   state.userPosition = nextPosition;
-  els.startButton.textContent = "Stop tracking";
   updateUserMarker();
   evaluateNearest();
 }
 
 function onPositionError(error) {
-  els.startButton.textContent = "Start tracking";
   els.nearestTitle.textContent = "Location permission needed";
   els.nearestMeta.textContent = error.message || "Allow location access to monitor nearby camera sites.";
 }
