@@ -24,6 +24,7 @@ const state = {
   radiusCircle: null,
   routeLine: null,
   lastAlertAt: 0,
+  notificationCheckId: null,
   audioContext: null
 };
 
@@ -32,7 +33,7 @@ const els = {
   nearestTitle: document.querySelector("#nearestTitle"),
   nearestMeta: document.querySelector("#nearestMeta"),
   recenterButton: document.querySelector("#recenterButton"),
-  notifyButton: document.querySelector("#notifyButton"),
+  alertPermissionStatus: document.querySelector("#alertPermissionStatus"),
   soundTestButton: document.querySelector("#soundTestButton"),
   radiusInput: document.querySelector("#radiusInput"),
   radiusValue: document.querySelector("#radiusValue"),
@@ -53,6 +54,7 @@ async function boot() {
   wireControls();
   await registerServiceWorker();
   await loadCameraData();
+  startNotificationMonitoring();
   startTracking();
   render();
 }
@@ -82,7 +84,6 @@ function wireControls() {
   els.radiusValue.textContent = formatDistance(state.alertRadius);
 
   els.recenterButton.addEventListener("click", recenterFromControl);
-  els.notifyButton.addEventListener("click", requestNotifications);
   els.soundTestButton.addEventListener("click", () => playMobileAlert(true));
   els.monthlyButton.addEventListener("click", downloadLatestMonthlyFile);
   els.geocodeButton.addEventListener("click", () => geocodeNextBatch(35));
@@ -250,7 +251,7 @@ function triggerApproachAlert(nearest) {
   playMobileAlert();
 
   const body = `${nearest.camera.location}, ${nearest.camera.suburb} is ${formatDistance(nearest.distance)} away.`;
-  if (Notification.permission === "granted") {
+  if ("Notification" in window && Notification.permission === "granted") {
     navigator.serviceWorker?.ready.then((registration) => {
       registration.showNotification("Mobile camera approved location nearby", {
         body,
@@ -285,11 +286,48 @@ function playMobileAlert(short = false) {
 
 async function requestNotifications() {
   if (!("Notification" in window)) {
-    els.notifyButton.textContent = "No notifications";
+    updateNotificationStatus("unsupported");
     return;
   }
-  const permission = await Notification.requestPermission();
-  els.notifyButton.textContent = permission === "granted" ? "Alerts enabled" : "Enable alerts";
+  try {
+    const permission = await Notification.requestPermission();
+    updateNotificationStatus(permission);
+  } catch {
+    updateNotificationStatus(Notification.permission);
+  }
+}
+
+function startNotificationMonitoring() {
+  checkNotificationPermission({ prompt: true });
+  state.notificationCheckId = window.setInterval(checkNotificationPermission, 30_000);
+  window.addEventListener("focus", checkNotificationPermission);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) checkNotificationPermission();
+  });
+}
+
+function checkNotificationPermission(options = {}) {
+  if (!("Notification" in window)) {
+    updateNotificationStatus("unsupported");
+    return;
+  }
+  if (options.prompt && Notification.permission === "default") {
+    requestNotifications();
+    return;
+  }
+  updateNotificationStatus(Notification.permission);
+}
+
+function updateNotificationStatus(permission) {
+  if (!els.alertPermissionStatus) return;
+  const messages = {
+    granted: "Device alerts are enabled.",
+    denied: "Device alerts are blocked. Enable notifications for this app in your browser or device settings.",
+    default: "Device alerts are not enabled yet. Allow notifications when prompted.",
+    unsupported: "Device alerts are not supported in this browser."
+  };
+  els.alertPermissionStatus.textContent = messages[permission] || messages.default;
+  els.alertPermissionStatus.dataset.permission = permission;
 }
 
 async function geocodeNextBatch(limit = 25) {
@@ -485,7 +523,7 @@ function userMarkerHtml(heading) {
 function render() {
   els.cameraCount.textContent = String(state.cameras.length);
   els.codedCount.textContent = String(Object.keys(state.geocodes).length);
-  if (Notification.permission === "granted") els.notifyButton.textContent = "Alerts enabled";
+  checkNotificationPermission();
 }
 
 function distanceMeters(a, b) {

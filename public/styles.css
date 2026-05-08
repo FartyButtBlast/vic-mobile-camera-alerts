@@ -69,7 +69,6 @@ input {
 
 .brand-row,
 .range-row,
-.control-grid,
 .stats-grid {
   display: flex;
   align-items: center;
@@ -157,19 +156,28 @@ p {
 
 .status-card p,
 .fine-print,
+.alert-permission-status,
 #dataStatus {
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.4;
 }
 
-.control-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.alert-permission-status {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(245, 247, 251, 0.06);
 }
 
-.control-grid.single-action {
-  grid-template-columns: 1fr;
+.alert-permission-status[data-permission="granted"] {
+  color: var(--green);
+}
+
+.alert-permission-status[data-permission="denied"],
+.alert-permission-status[data-permission="default"],
+.alert-permission-status[data-permission="unsupported"] {
+  color: var(--accent);
 }
 
 button,
@@ -352,9 +360,5 @@ input[type="range"] {
 
   .brand-row h1 {
     font-size: 1.18rem;
-  }
-
-  .control-grid {
-    grid-template-columns: 1fr;
   }
 }
