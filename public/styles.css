@@ -260,13 +260,52 @@ input[type="range"] {
   fill: currentColor;
 }
 
-.user-marker {
+.user-location-marker {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+.user-location-marker::before {
+  position: absolute;
+  inset: 7px;
+  content: "";
+  border: 2px solid rgba(33, 136, 255, 0.42);
+  border-radius: 50%;
+  background: rgba(33, 136, 255, 0.12);
+}
+
+.user-location-bearing {
+  position: absolute;
+  left: 50%;
+  top: 3px;
   width: 18px;
-  height: 18px;
+  height: 29px;
+  transform-origin: 50% 24px;
+  translate: -50% 0;
+}
+
+.user-location-bearing::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  clip-path: polygon(50% 0, 100% 100%, 50% 76%, 0 100%);
+  background: var(--accent);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.36));
+}
+
+.user-location-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
   border: 4px solid #ffffff;
   border-radius: 50%;
   background: #2188ff;
-  box-shadow: 0 0 0 12px rgba(33, 136, 255, 0.18);
+  box-shadow: 0 0 0 8px rgba(33, 136, 255, 0.18);
+  translate: -50% -50%;
 }
 
 @media (min-width: 760px) {

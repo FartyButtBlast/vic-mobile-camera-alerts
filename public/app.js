@@ -11,6 +11,8 @@ const state = {
   cameras: [],
   geocodes: loadJson(GEOCODE_CACHE_KEY, {}),
   userPosition: null,
+  previousPosition: null,
+  userHeading: null,
   nearest: null,
   watchId: null,
   alertRadius: Number(loadJson(SETTINGS_KEY, { radius: 750 }).radius || 750),
@@ -152,7 +154,10 @@ function toggleTracking() {
 
 function onPosition(position) {
   const { latitude, longitude, accuracy, speed, heading } = position.coords;
-  state.userPosition = { lat: latitude, lng: longitude, accuracy, speed, heading };
+  const nextPosition = { lat: latitude, lng: longitude, accuracy, speed, heading };
+  state.userHeading = resolveHeading(nextPosition, state.userPosition);
+  state.previousPosition = state.userPosition;
+  state.userPosition = nextPosition;
   els.startButton.textContent = "Stop tracking";
   updateUserMarker();
   evaluateNearest();
@@ -166,11 +171,17 @@ function onPositionError(error) {
 
 function updateUserMarker() {
   const latLng = [state.userPosition.lat, state.userPosition.lng];
-  const icon = L.divIcon({ className: "", html: '<div class="user-marker"></div>', iconSize: [18, 18], iconAnchor: [9, 9] });
+  const icon = L.divIcon({
+    className: "",
+    html: userMarkerHtml(state.userHeading),
+    iconSize: [54, 54],
+    iconAnchor: [27, 27]
+  });
   if (!state.userMarker) {
     state.userMarker = L.marker(latLng, { icon }).addTo(state.map);
   } else {
     state.userMarker.setLatLng(latLng);
+    state.userMarker.setIcon(icon);
   }
   updateWatchArea(latLng);
 }
@@ -455,6 +466,16 @@ function cameraIconHtml(active) {
     </div>`;
 }
 
+function userMarkerHtml(heading) {
+  const hasHeading = Number.isFinite(heading);
+  const rotation = hasHeading ? ` style="transform: rotate(${heading}deg)"` : "";
+  return `
+    <div class="user-location-marker" aria-label="Your current location${hasHeading ? " and direction" : ""}">
+      <div class="user-location-bearing"${rotation}></div>
+      <div class="user-location-dot"></div>
+    </div>`;
+}
+
 function render() {
   els.cameraCount.textContent = String(state.cameras.length);
   els.codedCount.textContent = String(Object.keys(state.geocodes).length);
@@ -471,6 +492,27 @@ function distanceMeters(a, b) {
     Math.sin(deltaLat / 2) ** 2 +
     Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng / 2) ** 2;
   return radius * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+}
+
+function resolveHeading(current, previous) {
+  if (Number.isFinite(current.heading) && current.heading >= 0) {
+    return current.heading;
+  }
+  if (!previous) return state.userHeading;
+  const moved = distanceMeters(previous, current);
+  if (moved < 6) return state.userHeading;
+  return bearingDegrees(previous, current);
+}
+
+function bearingDegrees(a, b) {
+  const lat1 = toRadians(a.lat);
+  const lat2 = toRadians(b.lat);
+  const deltaLng = toRadians(b.lng - a.lng);
+  const y = Math.sin(deltaLng) * Math.cos(lat2);
+  const x =
+    Math.cos(lat1) * Math.sin(lat2) -
+    Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLng);
+  return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
 }
 
 function loadJson(key, fallback) {
