@@ -1,0 +1,12 @@
+{
+  "generatedAt": null,
+  "sourceFile": "latest-mobile-camera-locations.xlsx",
+  "sourceUrl": "data/latest-mobile-camera-locations.xlsx",
+  "period": "April 2026",
+  "count": 2252,
+  "mappedCount": 0,
+  "unmappedCount": 2252,
+  "note": "Run npm run geocode:data after loading a new Excel file to populate this file with approximate coordinates.",
+  "locations": [],
+  "failures": []
+}

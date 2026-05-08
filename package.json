@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/refresh-mobile-cameras.mjs",
     "build:data": "node scripts/refresh-mobile-cameras.mjs",
+    "geocode:data": "node scripts/geocode-mobile-cameras.mjs",
     "start": "python3 -m http.server 4173 -d public",
     "dev": "python3 -m http.server 4173 -d public"
   },

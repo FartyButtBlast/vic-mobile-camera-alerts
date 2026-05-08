@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/latest-mobile-camera-locations.xlsx public/data/mobile-cameras-latest.json
+          git add public/data/latest-mobile-camera-locations.xlsx public/data/mobile-cameras-latest.json public/data/mobile-cameras-geocoded.json
           git diff --cached --quiet || git commit -m "Refresh mobile camera data"
           git push
 

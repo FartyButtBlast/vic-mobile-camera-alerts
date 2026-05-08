@@ -8,6 +8,7 @@ const APP_SHELL = [
   "manifest.webmanifest",
   "icon.svg",
   "data/mobile-cameras-latest.json",
+  "data/mobile-cameras-geocoded.json",
   "data/latest-mobile-camera-locations.xlsx",
   "data/mobile-cameras-april-2026.json"
 ];

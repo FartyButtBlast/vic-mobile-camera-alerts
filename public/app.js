@@ -1,6 +1,7 @@
 const DATASET_API =
   "https://discover.data.vic.gov.au/api/3/action/package_show?id=road-safety-camera-network-mobile-camera-locations";
 const LATEST_DATA = new URL("data/mobile-cameras-latest.json", location.href).toString();
+const GEOCODED_DATA = new URL("data/mobile-cameras-geocoded.json", location.href).toString();
 const SEED_DATA = new URL("data/mobile-cameras-april-2026.json", location.href).toString();
 const LATEST_EXCEL = new URL("data/latest-mobile-camera-locations.xlsx", location.href).toString();
 const GEOCODE_CACHE_KEY = "vic-camera-geocodes-v1";
@@ -131,6 +132,7 @@ async function loadCameraData() {
   const response = await fetch(LATEST_DATA).catch(() => fetch(SEED_DATA));
   const data = await response.json();
   applyCameraData(data, `Loaded ${data.period || "latest"} from GitHub-hosted camera data.`);
+  await loadGeocodedCameraData();
 }
 
 function applyCameraData(data, statusText) {
@@ -145,6 +147,34 @@ function applyCameraData(data, statusText) {
   render();
   drawKnownCameraMarkers();
   evaluateNearest();
+}
+
+async function loadGeocodedCameraData() {
+  try {
+    const response = await fetch(GEOCODED_DATA, { cache: "no-store" });
+    if (!response.ok) return;
+    const data = await response.json();
+    let merged = 0;
+    for (const location of data.locations || []) {
+      if (!Number.isFinite(location.lat) || !Number.isFinite(location.lng)) continue;
+      state.geocodes[location.id] = {
+        lat: location.lat,
+        lng: location.lng,
+        label: location.label,
+        approximate: true,
+        source: "mobile-cameras-geocoded.json"
+      };
+      merged += 1;
+    }
+    if (!merged) return;
+    saveJson(GEOCODE_CACHE_KEY, state.geocodes);
+    els.dataStatus.textContent = `Loaded ${merged} mapped camera locations from generated JSON.`;
+    render();
+    drawKnownCameraMarkers();
+    evaluateNearest();
+  } catch (error) {
+    console.warn("Geocoded camera data unavailable", error);
+  }
 }
 
 function startTracking() {

@@ -33,6 +33,18 @@ The matching parsed JSON lives at:
 
 `public/data/mobile-cameras-latest.json`
 
+The fully mapped camera JSON lives at:
+
+`public/data/mobile-cameras-geocoded.json`
+
+Create or refresh it only when a new Excel file is loaded:
+
+```sh
+npm run geocode:data
+```
+
+The geocoding job is resumable and writes progress back to the JSON file after each location. It intentionally runs slowly because public geocoders rate-limit bulk address lookup.
+
 ## Local update
 
 To refresh the camera data locally:

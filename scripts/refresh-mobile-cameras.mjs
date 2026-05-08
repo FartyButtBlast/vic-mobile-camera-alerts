@@ -8,6 +8,7 @@ const DATASET_API =
 const dataDir = path.join(process.cwd(), "public", "data");
 const jsonOutputPath = path.join(dataDir, "mobile-cameras-latest.json");
 const excelOutputPath = path.join(dataDir, "latest-mobile-camera-locations.xlsx");
+const geocodedOutputPath = path.join(dataDir, "mobile-cameras-geocoded.json");
 
 const dataset = await fetchJson(DATASET_API);
 const resource = selectLatestExcelResource(dataset.result?.resources ?? []);
@@ -25,6 +26,7 @@ const data = parseRows(rows, resource);
 await fs.mkdir(dataDir, { recursive: true });
 await fs.writeFile(excelOutputPath, workbookBuffer);
 await fs.writeFile(jsonOutputPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+await resetGeocodedOutput(data);
 
 console.log(`Wrote ${data.count} mobile camera locations from ${data.sourceFile}.`);
 console.log(`Saved latest Excel to ${path.relative(process.cwd(), excelOutputPath)}.`);
@@ -134,4 +136,21 @@ function inferPeriod(fileName) {
     /(January|February|March|April|May|June|July|August|September|October|November|December)[-\s]+(\d{4})/i
   );
   return match ? `${titleCase(match[1])} ${match[2]}` : "latest";
+}
+
+async function resetGeocodedOutput(data) {
+  const payload = {
+    generatedAt: null,
+    sourceFile: data.sourceFile,
+    sourceUrl: data.sourceUrl,
+    upstreamSourceUrl: data.upstreamSourceUrl,
+    period: data.period,
+    count: data.cameras.length,
+    mappedCount: 0,
+    unmappedCount: data.cameras.length,
+    note: "Run npm run geocode:data after loading a new Excel file to populate this file with approximate coordinates.",
+    locations: [],
+    failures: []
+  };
+  await fs.writeFile(geocodedOutputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
 }

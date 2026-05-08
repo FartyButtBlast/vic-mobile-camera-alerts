@@ -30,6 +30,16 @@ On GitHub Pages it is available at:
 
 `https://FartyButtBlast.github.io/vic-mobile-camera-alerts/data/latest-mobile-camera-locations.xlsx`
 
+The app can also load pre-mapped coordinates from:
+
+`public/data/mobile-cameras-geocoded.json`
+
+Refresh that file only when a new Excel is loaded:
+
+```sh
+npm run geocode:data
+```
+
 ## Notes
 
 - The source spreadsheet contains location descriptions and suburbs, but not latitude/longitude.
