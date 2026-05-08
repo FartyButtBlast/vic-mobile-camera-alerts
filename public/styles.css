@@ -108,6 +108,34 @@ p {
   color: var(--ink);
 }
 
+.map-control-button {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  min-height: 46px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0;
+  background: rgba(13, 17, 23, 0.88);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.map-control-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.recenter-button {
+  top: calc(16px + env(safe-area-inset-top));
+  left: 16px;
+}
+
 .status-card {
   display: grid;
   gap: 6px;

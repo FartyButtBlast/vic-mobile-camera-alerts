@@ -29,6 +29,7 @@ const els = {
   alertCard: document.querySelector("#alertCard"),
   nearestTitle: document.querySelector("#nearestTitle"),
   nearestMeta: document.querySelector("#nearestMeta"),
+  recenterButton: document.querySelector("#recenterButton"),
   notifyButton: document.querySelector("#notifyButton"),
   soundTestButton: document.querySelector("#soundTestButton"),
   radiusInput: document.querySelector("#radiusInput"),
@@ -78,6 +79,7 @@ function wireControls() {
   els.radiusInput.value = state.alertRadius;
   els.radiusValue.textContent = formatDistance(state.alertRadius);
 
+  els.recenterButton.addEventListener("click", recenterFromControl);
   els.notifyButton.addEventListener("click", requestNotifications);
   els.soundTestButton.addEventListener("click", () => playMobileAlert(true));
   els.monthlyButton.addEventListener("click", downloadLatestMonthlyFile);
@@ -88,6 +90,21 @@ function wireControls() {
     saveJson(SETTINGS_KEY, { radius: state.alertRadius });
     els.radiusValue.textContent = formatDistance(state.alertRadius);
     evaluateNearest();
+  });
+}
+
+function recenterFromControl() {
+  if (state.userPosition) {
+    centerMapOnUser();
+    return;
+  }
+  els.nearestTitle.textContent = "Finding your location";
+  els.nearestMeta.textContent = "Checking your current position now.";
+  startTracking();
+  navigator.geolocation?.getCurrentPosition(onPosition, onPositionError, {
+    enableHighAccuracy: true,
+    maximumAge: 0,
+    timeout: 12000
   });
 }
 
