@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T20:38:50.754Z",
+  "generatedAt": "2026-06-05T20:33:37.482Z",
   "sourceFile": "Mobile Camera Locations - April 2026",
   "sourceUrl": "data/latest-mobile-camera-locations.xlsx",
   "upstreamSourceUrl": "https://www.vic.gov.au/sites/default/files/2026-03/Mobile-Camera-Locations-April-2026.xlsx",
@@ -26045,7 +26045,7 @@
       "suburb": "Ascot",
       "query": "Gillies Road, Ascot, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:07.601Z"
+      "attemptedAt": "2026-06-05T20:31:54.688Z"
     },
     {
       "id": "gillies-road-bald-hills-688",
@@ -26053,7 +26053,7 @@
       "suburb": "Bald Hills",
       "query": "Gillies Road, Bald Hills, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:06.222Z"
+      "attemptedAt": "2026-06-05T20:31:53.062Z"
     },
     {
       "id": "murray-valley-highway-barep-1397",
@@ -26061,7 +26061,7 @@
       "suburb": "Barep",
       "query": "Murray Valley Highway, Barep, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:48.308Z"
+      "attemptedAt": "2026-06-05T20:32:35.125Z"
     },
     {
       "id": "midland-highway-barkers-creek-1304",
@@ -26069,7 +26069,7 @@
       "suburb": "Barkers Creek",
       "query": "Midland Highway, Barkers Creek, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:43.784Z"
+      "attemptedAt": "2026-06-05T20:32:30.402Z"
     },
     {
       "id": "geelong-ballan-road-beremboke-679",
@@ -26077,7 +26077,7 @@
       "suburb": "Beremboke",
       "query": "Geelong-Ballan Road, Beremboke, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:04.482Z"
+      "attemptedAt": "2026-06-05T20:31:51.463Z"
     },
     {
       "id": "hamilton-highway-berrybank-820",
@@ -26085,7 +26085,7 @@
       "suburb": "Berrybank",
       "query": "Hamilton Highway, Berrybank, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:12.087Z"
+      "attemptedAt": "2026-06-05T20:31:59.369Z"
     },
     {
       "id": "mallee-highway-boorongie-north-1166",
@@ -26093,7 +26093,7 @@
       "suburb": "Boorongie North",
       "query": "Mallee Highway, Boorongie North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:31.217Z"
+      "attemptedAt": "2026-06-05T20:32:18.042Z"
     },
     {
       "id": "belmore-road-box-hill-north-147",
@@ -26101,7 +26101,7 @@
       "suburb": "Box Hill North",
       "query": "Belmore Road, Box Hill North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:39.990Z"
+      "attemptedAt": "2026-06-05T20:31:28.268Z"
     },
     {
       "id": "sunraysia-highway-bronzewing-1936",
@@ -26109,7 +26109,7 @@
       "suburb": "Bronzewing",
       "query": "Sunraysia Highway, Bronzewing, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:21.282Z"
+      "attemptedAt": "2026-06-05T20:33:07.553Z"
     },
     {
       "id": "western-freeway-buangor-2135",
@@ -26117,7 +26117,7 @@
       "suburb": "Buangor",
       "query": "Western Freeway, Buangor, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:36.396Z"
+      "attemptedAt": "2026-06-05T20:33:22.714Z"
     },
     {
       "id": "princes-freeway-bunyip-north-1622",
@@ -26125,7 +26125,7 @@
       "suburb": "Bunyip North",
       "query": "Princes Freeway, Bunyip North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:57.135Z"
+      "attemptedAt": "2026-06-05T20:32:43.742Z"
     },
     {
       "id": "princes-freeway-bunyip-1629",
@@ -26133,7 +26133,7 @@
       "suburb": "Bunyip",
       "query": "Princes Freeway, Bunyip, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:58.553Z"
+      "attemptedAt": "2026-06-05T20:32:45.287Z"
     },
     {
       "id": "western-highway-burrumbeet-2149",
@@ -26141,7 +26141,7 @@
       "suburb": "Burrumbeet",
       "query": "Western Highway, Burrumbeet, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:39.599Z"
+      "attemptedAt": "2026-06-05T20:33:25.805Z"
     },
     {
       "id": "henty-highway-byrneville-874",
@@ -26149,7 +26149,7 @@
       "suburb": "Byrneville",
       "query": "Henty Highway, Byrneville, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:13.802Z"
+      "attemptedAt": "2026-06-05T20:32:00.799Z"
     },
     {
       "id": "prouses-road-california-gully-1693",
@@ -26157,7 +26157,7 @@
       "suburb": "California Gully",
       "query": "Prouses Road, California Gully, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:07.868Z"
+      "attemptedAt": "2026-06-05T20:32:54.654Z"
     },
     {
       "id": "loddon-valley-highway-canary-island-south-1107",
@@ -26165,7 +26165,7 @@
       "suburb": "Canary Island South",
       "query": "Loddon Valley Highway, Canary Island South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:28.508Z"
+      "attemptedAt": "2026-06-05T20:32:14.892Z"
     },
     {
       "id": "mallee-highway-carina-1167",
@@ -26173,7 +26173,7 @@
       "suburb": "Carina",
       "query": "Mallee Highway, Carina, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:32.950Z"
+      "attemptedAt": "2026-06-05T20:32:19.591Z"
     },
     {
       "id": "chesterville-road-cheltenham-north-382",
@@ -26181,7 +26181,7 @@
       "suburb": "Cheltenham North",
       "query": "Chesterville Road, Cheltenham North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:51.391Z"
+      "attemptedAt": "2026-06-05T20:31:40.797Z"
     },
     {
       "id": "western-highway-dahlen-2154",
@@ -26189,7 +26189,7 @@
       "suburb": "Dahlen",
       "query": "Western Highway, Dahlen, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:41.002Z"
+      "attemptedAt": "2026-06-05T20:33:27.451Z"
     },
     {
       "id": "princes-freeway-darnum-1630",
@@ -26197,7 +26197,7 @@
       "suburb": "Darnum",
       "query": "Princes Freeway, Darnum, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:59.929Z"
+      "attemptedAt": "2026-06-05T20:32:46.831Z"
     },
     {
       "id": "melba-highway-devlin-bridge-1256",
@@ -26205,7 +26205,7 @@
       "suburb": "Devlin Bridge",
       "query": "Melba Highway, Devlin Bridge, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:40.594Z"
+      "attemptedAt": "2026-06-05T20:32:27.316Z"
     },
     {
       "id": "princes-highway-drumborg-1669",
@@ -26213,7 +26213,7 @@
       "suburb": "Drumborg",
       "query": "Princes Highway, Drumborg, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:04.851Z"
+      "attemptedAt": "2026-06-05T20:32:51.351Z"
     },
     {
       "id": "western-highway-drung-drung-south-2156",
@@ -26221,7 +26221,7 @@
       "suburb": "Drung Drung South",
       "query": "Western Highway, Drung Drung South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:42.412Z"
+      "attemptedAt": "2026-06-05T20:33:28.844Z"
     },
     {
       "id": "ut-creek-road-eildon-2039",
@@ -26229,7 +26229,7 @@
       "suburb": "Eildon",
       "query": "UT Creek Road, Eildon, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:31.107Z"
+      "attemptedAt": "2026-06-05T20:33:17.660Z"
     },
     {
       "id": "todd-road-fishermens-bend-1995",
@@ -26237,7 +26237,7 @@
       "suburb": "Fishermens Bend",
       "query": "Todd Road, Fishermens Bend, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:25.390Z"
+      "attemptedAt": "2026-06-05T20:33:10.679Z"
     },
     {
       "id": "south-gippsland-highway-five-ways-1856",
@@ -26245,7 +26245,7 @@
       "suburb": "Five Ways",
       "query": "South Gippsland Highway, Five Ways, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:14.644Z"
+      "attemptedAt": "2026-06-05T20:33:00.924Z"
     },
     {
       "id": "hyland-highway-flynns-creek-upper-971",
@@ -26253,7 +26253,7 @@
       "suburb": "Flynns Creek Upper",
       "query": "Hyland Highway, Flynns Creek Upper, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:21.953Z"
+      "attemptedAt": "2026-06-05T20:32:08.665Z"
     },
     {
       "id": "sunraysia-highway-gama-1932",
@@ -26261,7 +26261,7 @@
       "suburb": "Gama",
       "query": "Sunraysia Highway, Gama, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:19.970Z"
+      "attemptedAt": "2026-06-05T20:33:05.959Z"
     },
     {
       "id": "fyansford-gheringhap-road-gheringhap-665",
@@ -26269,7 +26269,7 @@
       "suburb": "Gheringhap",
       "query": "Fyansford-Gheringhap Road, Gheringhap, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:02.717Z"
+      "attemptedAt": "2026-06-05T20:31:50.039Z"
     },
     {
       "id": "midland-highway-gheringhap-1297",
@@ -26277,7 +26277,7 @@
       "suburb": "Gheringhap",
       "query": "Midland Highway, Gheringhap, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:42.329Z"
+      "attemptedAt": "2026-06-05T20:32:28.856Z"
     },
     {
       "id": "wallan-road-glenvale-2067",
@@ -26285,7 +26285,7 @@
       "suburb": "Glenvale",
       "query": "Wallan Road, Glenvale, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:32.966Z"
+      "attemptedAt": "2026-06-05T20:33:19.481Z"
     },
     {
       "id": "inglis-street-golden-square-976",
@@ -26293,7 +26293,7 @@
       "suburb": "Golden Square",
       "query": "Inglis Street, Golden Square, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:23.339Z"
+      "attemptedAt": "2026-06-05T20:32:10.373Z"
     },
     {
       "id": "hopkins-highway-grassmere-929",
@@ -26301,7 +26301,7 @@
       "suburb": "Grassmere",
       "query": "Hopkins Highway, Grassmere, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:20.618Z"
+      "attemptedAt": "2026-06-05T20:32:07.121Z"
     },
     {
       "id": "sunraysia-highway-gypsum-1937",
@@ -26309,7 +26309,7 @@
       "suburb": "Gypsum",
       "query": "Sunraysia Highway, Gypsum, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:23.535Z"
+      "attemptedAt": "2026-06-05T20:33:09.100Z"
     },
     {
       "id": "hallam-south-road-hampton-park-817",
@@ -26317,7 +26317,7 @@
       "suburb": "Hampton Park",
       "query": "Hallam South Road, Hampton Park, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:08.994Z"
+      "attemptedAt": "2026-06-05T20:31:56.323Z"
     },
     {
       "id": "banksia-street-heidelberg-heights-85",
@@ -26325,7 +26325,7 @@
       "suburb": "Heidelberg Heights",
       "query": "Banksia Street, Heidelberg Heights, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:34.958Z"
+      "attemptedAt": "2026-06-05T20:31:23.475Z"
     },
     {
       "id": "tomahawk-creek-road-irrewillipe-1997",
@@ -26333,7 +26333,7 @@
       "suburb": "Irrewillipe",
       "query": "Tomahawk Creek Road, Irrewillipe, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:27.104Z"
+      "attemptedAt": "2026-06-05T20:33:12.937Z"
     },
     {
       "id": "ararat-halls-gap-road-jallukar-31",
@@ -26341,7 +26341,7 @@
       "suburb": "Jallukar",
       "query": "Ararat-Halls Gap Road, Jallukar, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:33.410Z"
+      "attemptedAt": "2026-06-05T20:31:21.930Z"
     },
     {
       "id": "mckenzie-street-west-kangaroo-flat-1243",
@@ -26349,7 +26349,7 @@
       "suburb": "Kangaroo Flat",
       "query": "McKenzie Street West, Kangaroo Flat, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:37.893Z"
+      "attemptedAt": "2026-06-05T20:32:24.100Z"
     },
     {
       "id": "kulkyne-way-karadoc-1062",
@@ -26357,7 +26357,7 @@
       "suburb": "Karadoc",
       "query": "Kulkyne Way, Karadoc, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:26.646Z"
+      "attemptedAt": "2026-06-05T20:32:13.427Z"
     },
     {
       "id": "sturt-highway-karawinna-1917",
@@ -26365,7 +26365,7 @@
       "suburb": "Karawinna",
       "query": "Sturt Highway, Karawinna, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:18.037Z"
+      "attemptedAt": "2026-06-05T20:33:04.372Z"
     },
     {
       "id": "loddon-valley-highway-kerang-south-1111",
@@ -26373,7 +26373,7 @@
       "suburb": "Kerang South",
       "query": "Loddon Valley Highway, Kerang South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:29.858Z"
+      "attemptedAt": "2026-06-05T20:32:16.535Z"
     },
     {
       "id": "hillcrest-avenue-kew-east-916",
@@ -26381,7 +26381,7 @@
       "suburb": "Kew East",
       "query": "Hillcrest Avenue, Kew East, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:18.908Z"
+      "attemptedAt": "2026-06-05T20:32:05.561Z"
     },
     {
       "id": "western-highway-kinimakatka-2158",
@@ -26389,7 +26389,7 @@
       "suburb": "Kinimakatka",
       "query": "Western Highway, Kinimakatka, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:44.167Z"
+      "attemptedAt": "2026-06-05T20:33:30.199Z"
     },
     {
       "id": "dalmore-road-koo-wee-rup-473",
@@ -26397,7 +26397,7 @@
       "suburb": "Koo Wee Rup",
       "query": "Dalmore Road, Koo Wee Rup, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:56.233Z"
+      "attemptedAt": "2026-06-05T20:31:45.290Z"
     },
     {
       "id": "twentieth-street-koorlong-2027",
@@ -26405,7 +26405,7 @@
       "suburb": "Koorlong",
       "query": "Twentieth Street, Koorlong, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:29.799Z"
+      "attemptedAt": "2026-06-05T20:33:16.077Z"
     },
     {
       "id": "beaufort-skipton-road-lake-goldsmith-130",
@@ -26413,7 +26413,7 @@
       "suburb": "Lake Goldsmith",
       "query": "Beaufort-Skipton Road, Lake Goldsmith, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:38.545Z"
+      "attemptedAt": "2026-06-05T20:31:26.846Z"
     },
     {
       "id": "bass-highway-lang-lang-south-109",
@@ -26421,7 +26421,7 @@
       "suburb": "Lang Lang South",
       "query": "Bass Highway, Lang Lang South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:36.687Z"
+      "attemptedAt": "2026-06-05T20:31:25.237Z"
     },
     {
       "id": "melba-highway-limestone-1255",
@@ -26429,7 +26429,7 @@
       "suburb": "Limestone",
       "query": "Melba Highway, Limestone, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:39.247Z"
+      "attemptedAt": "2026-06-05T20:32:25.681Z"
     },
     {
       "id": "western-highway-lochiel-2159",
@@ -26437,7 +26437,7 @@
       "suburb": "Lochiel",
       "query": "Western Highway, Lochiel, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:45.572Z"
+      "attemptedAt": "2026-06-05T20:33:31.810Z"
     },
     {
       "id": "princes-highway-mckenzie-river-1674",
@@ -26445,7 +26445,7 @@
       "suburb": "Mckenzie River",
       "query": "Princes Highway, Mckenzie River, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:06.423Z"
+      "attemptedAt": "2026-06-05T20:32:53.058Z"
     },
     {
       "id": "oneills-road-melton-1524",
@@ -26453,7 +26453,7 @@
       "suburb": "Melton",
       "query": "ONeills Road, Melton, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:55.711Z"
+      "attemptedAt": "2026-06-05T20:32:42.155Z"
     },
     {
       "id": "ferris-road-melton-south-626",
@@ -26461,7 +26461,7 @@
       "suburb": "Melton South",
       "query": "Ferris Road, Melton South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:01.006Z"
+      "attemptedAt": "2026-06-05T20:31:48.487Z"
     },
     {
       "id": "calder-highway-merbein-west-322",
@@ -26469,7 +26469,7 @@
       "suburb": "Merbein West",
       "query": "Calder Highway, Merbein West, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:49.939Z"
+      "attemptedAt": "2026-06-05T20:31:39.219Z"
     },
     {
       "id": "benetook-avenue-mildura-south-160",
@@ -26477,7 +26477,7 @@
       "suburb": "Mildura South",
       "query": "Benetook Avenue, Mildura South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:44.023Z"
+      "attemptedAt": "2026-06-05T20:31:32.854Z"
     },
     {
       "id": "sixteenth-street-mildura-south-1818",
@@ -26485,7 +26485,7 @@
       "suburb": "Mildura South",
       "query": "Sixteenth Street, Mildura South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:12.889Z"
+      "attemptedAt": "2026-06-05T20:32:59.292Z"
     },
     {
       "id": "walnut-avenue-mildura-south-2070",
@@ -26493,7 +26493,7 @@
       "suburb": "Mildura South",
       "query": "Walnut Avenue, Mildura South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:34.531Z"
+      "attemptedAt": "2026-06-05T20:33:21.106Z"
     },
     {
       "id": "western-highway-miram-south-2160",
@@ -26501,7 +26501,7 @@
       "suburb": "Miram South",
       "query": "Western Highway, Miram South, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:46.878Z"
+      "attemptedAt": "2026-06-05T20:33:33.307Z"
     },
     {
       "id": "keys-road-moorabbin-east-1020",
@@ -26509,7 +26509,7 @@
       "suburb": "Moorabbin East",
       "query": "Keys Road, Moorabbin East, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:25.258Z"
+      "attemptedAt": "2026-06-05T20:32:11.899Z"
     },
     {
       "id": "echuca-mooroopna-road-mooroopna-north-556",
@@ -26517,7 +26517,7 @@
       "suburb": "Mooroopna North",
       "query": "Echuca-Mooroopna Road, Mooroopna North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:57.947Z"
+      "attemptedAt": "2026-06-05T20:31:46.857Z"
     },
     {
       "id": "western-highway-mount-langi-ghiran-2161",
@@ -26525,7 +26525,7 @@
       "suburb": "Mount Langi Ghiran",
       "query": "Western Highway, Mount Langi Ghiran, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:48.212Z"
+      "attemptedAt": "2026-06-05T20:33:34.700Z"
     },
     {
       "id": "midland-highway-mount-prospect-1310",
@@ -26533,7 +26533,7 @@
       "suburb": "Mount Prospect",
       "query": "Midland Highway, Mount Prospect, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:45.339Z"
+      "attemptedAt": "2026-06-05T20:32:32.100Z"
     },
     {
       "id": "townsend-road-newcomb-2008",
@@ -26541,7 +26541,7 @@
       "suburb": "Newcomb",
       "query": "Townsend Road, Newcomb, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:28.445Z"
+      "attemptedAt": "2026-06-05T20:33:14.528Z"
     },
     {
       "id": "mooroopna-murchison-road-old-toolamba-1341",
@@ -26549,7 +26549,7 @@
       "suburb": "Old Toolamba",
       "query": "Mooroopna-Murchison Road, Old Toolamba, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:46.689Z"
+      "attemptedAt": "2026-06-05T20:32:33.477Z"
     },
     {
       "id": "mallee-highway-panitya-1170",
@@ -26557,7 +26557,7 @@
       "suburb": "Panitya",
       "query": "Mallee Highway, Panitya, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:34.683Z"
+      "attemptedAt": "2026-06-05T20:32:21.113Z"
     },
     {
       "id": "rhodes-parade-pascoe-vale-1736",
@@ -26565,7 +26565,7 @@
       "suburb": "Pascoe Vale",
       "query": "Rhodes Parade, Pascoe Vale, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:09.723Z"
+      "attemptedAt": "2026-06-05T20:32:56.233Z"
     },
     {
       "id": "murray-valley-highway-pederick-1399",
@@ -26573,7 +26573,7 @@
       "suburb": "Pederick",
       "query": "Murray Valley Highway, Pederick, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:49.849Z"
+      "attemptedAt": "2026-06-05T20:32:36.793Z"
     },
     {
       "id": "murray-valley-highway-piambie-1428",
@@ -26581,7 +26581,7 @@
       "suburb": "Piambie",
       "query": "Murray Valley Highway, Piambie, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:53.759Z"
+      "attemptedAt": "2026-06-05T20:32:40.625Z"
     },
     {
       "id": "bendigo-pyramid-hill-road-raywood-156",
@@ -26589,7 +26589,7 @@
       "suburb": "Raywood",
       "query": "Bendigo-Pyramid Hill Road, Raywood, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:41.315Z"
+      "attemptedAt": "2026-06-05T20:31:29.665Z"
     },
     {
       "id": "murray-valley-highway-red-bluff-1419",
@@ -26597,7 +26597,7 @@
       "suburb": "Red Bluff",
       "query": "Murray Valley Highway, Red Bluff, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:51.901Z"
+      "attemptedAt": "2026-06-05T20:32:39.004Z"
     },
     {
       "id": "henty-highway-riverside-875",
@@ -26605,7 +26605,7 @@
       "suburb": "Riverside",
       "query": "Henty Highway, Riverside, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:15.526Z"
+      "attemptedAt": "2026-06-05T20:32:02.173Z"
     },
     {
       "id": "seymour-pyalong-road-seymour-1803",
@@ -26613,7 +26613,7 @@
       "suburb": "Seymour",
       "query": "Seymour-Pyalong Road, Seymour, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:11.160Z"
+      "attemptedAt": "2026-06-05T20:32:57.795Z"
     },
     {
       "id": "stanley-road-silver-creek-1887",
@@ -26621,7 +26621,7 @@
       "suburb": "Silver Creek",
       "query": "Stanley Road, Silver Creek, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:16.690Z"
+      "attemptedAt": "2026-06-05T20:33:02.795Z"
     },
     {
       "id": "blackshaws-road-spotswood-186",
@@ -26629,7 +26629,7 @@
       "suburb": "Spotswood",
       "query": "Blackshaws Road, Spotswood, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:45.345Z"
+      "attemptedAt": "2026-06-05T20:31:34.510Z"
     },
     {
       "id": "bridgewater-road-trewalla-221",
@@ -26637,7 +26637,7 @@
       "suburb": "Trewalla",
       "query": "Bridgewater Road, Trewalla, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:46.799Z"
+      "attemptedAt": "2026-06-05T20:31:36.048Z"
     },
     {
       "id": "princes-freeway-tynong-north-1633",
@@ -26645,7 +26645,7 @@
       "suburb": "Tynong North",
       "query": "Princes Freeway, Tynong North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:03.380Z"
+      "attemptedAt": "2026-06-05T20:32:49.784Z"
     },
     {
       "id": "princes-freeway-tynong-1632",
@@ -26653,7 +26653,7 @@
       "suburb": "Tynong",
       "query": "Princes Freeway, Tynong, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:01.643Z"
+      "attemptedAt": "2026-06-05T20:32:48.218Z"
     },
     {
       "id": "mallee-highway-wagant-1172",
@@ -26661,7 +26661,7 @@
       "suburb": "Wagant",
       "query": "Mallee Highway, Wagant, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:36.028Z"
+      "attemptedAt": "2026-06-05T20:32:22.680Z"
     },
     {
       "id": "colac-ballarat-road-weering-424",
@@ -26669,7 +26669,7 @@
       "suburb": "Weering",
       "query": "Colac-Ballarat  Road, Weering, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:54.520Z"
+      "attemptedAt": "2026-06-05T20:31:43.789Z"
     },
     {
       "id": "western-highway-windermere-2141",
@@ -26677,7 +26677,7 @@
       "suburb": "Windermere",
       "query": "Western Highway, Windermere, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:37.901Z"
+      "attemptedAt": "2026-06-05T20:33:24.188Z"
     },
     {
       "id": "hamilton-highway-wingeel-818",
@@ -26685,7 +26685,7 @@
       "suburb": "Wingeel",
       "query": "Hamilton  Highway, Wingeel, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:10.710Z"
+      "attemptedAt": "2026-06-05T20:31:57.870Z"
     },
     {
       "id": "winton-glenrowan-road-winton-north-2217",
@@ -26693,7 +26693,7 @@
       "suburb": "Winton North",
       "query": "Winton-Glenrowan Road, Winton North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:38:49.541Z"
+      "attemptedAt": "2026-06-05T20:33:36.267Z"
     },
     {
       "id": "henty-highway-wonwondah-north-876",
@@ -26701,7 +26701,7 @@
       "suburb": "Wonwondah North",
       "query": "Henty Highway, Wonwondah North, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:37:17.265Z"
+      "attemptedAt": "2026-06-05T20:32:03.766Z"
     },
     {
       "id": "bendigo-pyramid-hill-road-woodvale-157",
@@ -26709,7 +26709,7 @@
       "suburb": "Woodvale",
       "query": "Bendigo-Pyramid Hill Road, Woodvale, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:42.685Z"
+      "attemptedAt": "2026-06-05T20:31:31.269Z"
     },
     {
       "id": "calder-highway-yatpool-300",
@@ -26717,7 +26717,7 @@
       "suburb": "Yatpool",
       "query": "Calder Highway, Yatpool, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:48.221Z"
+      "attemptedAt": "2026-06-05T20:31:37.640Z"
     },
     {
       "id": "colac-forrest-road-yeodene-422",
@@ -26725,7 +26725,7 @@
       "suburb": "Yeodene",
       "query": "Colac Forrest Road, Yeodene, Victoria, Australia",
       "reason": "No geocoder match",
-      "attemptedAt": "2026-06-04T20:36:52.806Z"
+      "attemptedAt": "2026-06-05T20:31:42.418Z"
     }
   ]
 }
